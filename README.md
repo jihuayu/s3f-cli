@@ -99,6 +99,34 @@ Integration tests automatically:
 
 If the Docker daemon is unavailable, the integration tests are skipped rather than failing the whole suite.
 
+## Self Update
+
+The CLI supports downloading the latest GitHub Release package for the current platform:
+
+```bash
+s3f update
+```
+
+The updater will:
+
+- query the latest release from `jihuayu/s3f-cli`
+- select the archive that matches the current OS and CPU architecture
+- download the release package
+- extract the `s3f` binary
+- replace the current executable in place
+
+For private GitHub releases, authentication is resolved in this order:
+
+- `GH_TOKEN`
+- `GITHUB_TOKEN`
+- `gh auth token`
+
+You can also check whether a newer release exists without applying it:
+
+```bash
+s3f update --check
+```
+
 ## CI and Releases
 
 This repository includes GitHub Actions for both CI and tagged releases:
