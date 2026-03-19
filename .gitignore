@@ -1,0 +1,19 @@
+.DS_Store
+.idea/
+.vscode/
+
+# Go build outputs
+bin/
+build/
+dist/
+coverage.out
+coverage.html
+*.test
+*.out
+
+# Local env files
+.env
+.env.*
+
+# OS junk
+Thumbs.db

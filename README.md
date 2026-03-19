@@ -98,3 +98,25 @@ Integration tests automatically:
 - verify store CRUD, range reads, multipart upload/copy, marker directories, recursive copy, move, and `find`
 
 If the Docker daemon is unavailable, the integration tests are skipped rather than failing the whole suite.
+
+## CI and Releases
+
+This repository includes GitHub Actions for both CI and tagged releases:
+
+- CI runs on push and pull request
+- release publishing runs when you push a tag like `v0.1.0`
+
+The release workflow uses GoReleaser to:
+
+- build `s3f` for Linux, macOS, and Windows
+- package artifacts as `.tar.gz` on Unix-like platforms and `.zip` on Windows
+- attach archives and a checksums file to the GitHub Release
+
+Example release flow:
+
+```bash
+git tag v0.1.0
+git push origin v0.1.0
+```
+
+After the tag is pushed, GitHub Actions will create the release and upload the generated packages automatically.
